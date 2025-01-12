@@ -4,9 +4,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>weather</title>
+        <link rel='stylesheet' href='styles.css'>
     </head>
     <body>
         <h1>api output:</h1>
-        <h2 id='data'></h2>
+        <h2 id='data' class='w-full'></h2>
+        <form id='locationSearch'>
+            <input type='text' id='locationString' autocomplete='off' class='w-full' placeholder='Search city'></innput>
+            <button type='submit' form='locationSearch'>submit</button>
+        </form>
     </body>
 </html>
