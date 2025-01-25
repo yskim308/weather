@@ -8,7 +8,7 @@ searchForm.addEventListener('submit', (event)=>{
     console.log(locationString)
     event.target.reset();
 
-    getData(locationString);
+    const data = getData(locationString);
 });
 
 
@@ -20,5 +20,8 @@ async function getData(locationString){
     for (let i = 0; i < daysArray.length; i++){
         console.log(daysArray[i].tempmax);
     }
+    return data.days; 
 }
+
+getData();
 
