@@ -6,6 +6,7 @@ const searchForm = document.querySelector('#locationSearch');
 searchForm.addEventListener('submit', (event)=>{
     event.preventDefault();
     let locationString = document.querySelector('#locationString').value;
+    getData(locationString);
     event.target.reset();
 
 });
