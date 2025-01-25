@@ -7,3 +7,9 @@ requireContext.keys().forEach((filePath)=>{
     images[fileName] = requireContext(filePath);
 })
 
+function updateTodayIcon(todayObject){
+    const todayIcon = document.querySelector('#todayIcon');
+    todayIcon.src = images[todayObject.icon];
+}
+
+export {updateTodayIcon}
