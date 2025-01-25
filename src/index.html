@@ -6,23 +6,26 @@
         <title>weather</title>
         <link rel='stylesheet' href='styles.css'>
     </head>
-    <body class='flex flex-col w-full h-full'>
-        <h1>api output:</h1>
-        <h2 id='data' class='w-full'></h2>
-        <form id='locationSearch'>
+    <body class='flex flex-col w-full h-full items-center justify-center'>
+        <form id='locationSearch' class='pt-10'>
             <input type='text' id='locationString' autocomplete='off' class='w-full' placeholder='Search city'></innput>
             <button type='submit' form='locationSearch'>submit</button>
         </form>
-        <div id='mainContent'>
-            <div id='todayContainer' class='flex justify-between'>
-                <div id='temperatureContainer' class='flex justify-between'>
-                    <div id='imageContainer' class='flex justify-between'></div>
-                    <div id=''
+        <div id='mainContent' class='lg:w-6/12 w-8/12'>
+            <div id='todayContainer' class='grid grid-cols-2 md:grid-cols-3 p-5'>
+                <div id='temperatureContainer' class='flex col-span-2'>
+                    <div id='imageContainer' class='flex justify-between pr-3'>image</div>
+                    <div id='temperature'>7 celcius</div>
+                    <div id='todayStats' class='px-10'>
+                        <ul>precipitation</ul>
+                        <ul>humidity</ul>
+                        <ul>uv</ul>
+                    </div>
                 </div>
-                <div id='todayDescription'>description here</div>
+                <div id='todayDescription col-span-2 md:col-span-1'>description here</div>
             </div>
             <div id='daysContainer'>days array goes here</div>
         </div>
-        <footer class='mt-auto text-center'>footer</footer>
+        <footer class='mt-auto'>footer</footer>
     </body>
 </html>
