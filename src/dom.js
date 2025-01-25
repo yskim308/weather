@@ -9,6 +9,8 @@ requireContext.keys().forEach((filePath)=>{
 
 function updateTodayIcon(todayObject){
     const todayIcon = document.querySelector('#todayIcon');
+    console.log(todayObject.icon);
+    console.log(images[todayObject.icon]);
     todayIcon.src = images[todayObject.icon];
 }
 

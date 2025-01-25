@@ -19,10 +19,9 @@ async function getData(locationString){
     for (let i = 0; i < daysArray.length; i++){
         //console.log(daysArray[i].tempmax);
     }
-    return daysArray; 
+    updateTodayIcon(daysArray[0]); 
 }
 
-const daysArray = getData('seoul');
-console.log(daysArray);
-//updateTodayIcon(daysArray[0]);
+getData();
+
 
