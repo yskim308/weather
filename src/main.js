@@ -20,7 +20,7 @@ async function getData(locationString){
     updateToday(daysArray[0]); 
     createDaysArray(daysArray);
     document.querySelector('#locationDiv').innerText = data.resolvedAddress;
-    document.querySelector('todayDescription').innerText = data.description;
+    document.querySelector('#todayDescription').innerText = data.description;
 }
 
 getData();
