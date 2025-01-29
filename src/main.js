@@ -1,5 +1,5 @@
 import './styles.css';
-import { updateToday } from './dom';
+import { updateToday, createDaysArray } from './dom';
 console.log('hello world!');
 
 const searchForm = document.querySelector('#locationSearch');
@@ -17,10 +17,8 @@ async function getData(locationString){
     const data = await apiFetch.json(); 
     console.log(data);
     let daysArray = data.days;
-    for (let i = 0; i < daysArray.length; i++){
-        //console.log(daysArray[i].tempmax);
-    }
     updateToday(daysArray[0]); 
+    createDaysArray(daysArray);
 }
 
 getData();
