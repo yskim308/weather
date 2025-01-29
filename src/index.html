@@ -11,22 +11,32 @@
             <input type='text' id='locationString' autocomplete='off' class='w-full' placeholder='Search city'></innput>
             <button type='submit' form='locationSearch'>submit</button>
         </form>
-        <div id='mainContent' class='lg:w-6/12 w-8/12'>
-            <div id='todayContainer' class='grid grid-cols-2 md:grid-cols-3 p-5'>
+        <div id='mainContent' class='lg:w-6/12 w-5/6'>
+            <div id='locationDiv' class='pt-5'></div>
+            <div id='todayContainer' class='grid grid-cols-2 md:grid-cols-3 px-5 pb-5'>
                 <div id='temperatureContainer' class='flex col-span-2'>
                     <div id='imageContainer' class='flex justify-between pr-3'>
-                        <img id='todayIcon' alt='loading' class='w-5 h-5'>
+                        <div id='todayIcon' class='flex items-center'></div>
                     </div>
-                    <div id='temperature'></div>
-                    <div id='todayConditions' class='px-10'>
-                        <ul>precipitation</ul>
-                        <ul>humidity</ul>
-                        <ul>uv</ul>
+                    <div id='temperature' class='flex'></div>
+                    <div id='todayConditions' class='px-5'>
+                        <ul class='flex py-1'>
+                            <img  id='rainImg' alt='rain' class='w-5 mr-3'>
+                            <span id='rainSpan'></span>
+                        </ul>
+                        <ul class='flex py-1'>
+                            <img  id='humidityImg' alt='humidity' class='w-5 mr-3'>
+                            <span id=humidSpan></span>
+                        </ul>
+                        <ul class='flex py-1'>
+                            <img  id='uvImg' alt='uv' class='w-5 mr-3'>
+                            <span id=uvSpan></span>
+                        </ul>
                     </div>
                 </div>
                 <div id='todayDescription' class ='col-span-2 md:col-span-1'>description here</div>
             </div>
-            <div id='daysContainer' class='flex overflow-x-auto'>card arry</div>
+            <div id='daysContainer' class='flex overflow-x-auto'></div>
         </div>
         <footer class='mt-auto'>footer</footer>
     </body>

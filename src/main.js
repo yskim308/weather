@@ -19,8 +19,10 @@ async function getData(locationString){
     let daysArray = data.days;
     updateToday(daysArray[0]); 
     createDaysArray(daysArray);
+    const locationDiv = document.querySelector('#locationString');
+    locationDiv.innerText = 'check?';
+    document.querySelector('#locationDiv').innerText = data.resolvedAddress;
 }
 
 getData();
-
 

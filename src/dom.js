@@ -1,9 +1,9 @@
 // importing images from img/ directory 
 const images = {}
-const requireContext = require.context('./img', false, /\.png$/);
+const requireContext = require.context('./img', false, /\.svg$/);
 requireContext.keys().forEach((filePath)=>{
     // make key for images the name of file without .png 
-    const fileName = filePath.replace('./', '').replace('.png', '');
+    const fileName = filePath.replace('./', '').replace('.svg', '');
     images[fileName] = requireContext(filePath);
 })
 
@@ -16,21 +16,43 @@ import uv from './img/ultraviolet.png';
 // updating the weather conditions for today
 function updateTodayIcon(todayObject){
     const todayIcon = document.querySelector('#todayIcon');
-    console.log(todayObject.icon);
-    console.log(images[todayObject.icon]);
-    todayIcon.src = images[todayObject.icon];
+    todayIcon.innerHTML = images[todayObject.icon];
+    todayIcon.classList.add('w-20');
 }
 
 function updateTodayTemperature(todayObject){
     const temperature = document.querySelector('#temperature');
-    temperature.innerText = todayObject.temp;
+    while (temperature.firstChild){
+        temperature.removeChild(temperature.firstChild);
+    }
+    const numberSpan = document.createElement('span');
+    numberSpan.innerText = `${todayObject.temp}`;
+    numberSpan.classList.add('text-4xl', 'font-semibold', 'self-center')
+    temperature.appendChild(numberSpan);
+
+    const degreeSpan = document.createElement('span');
+    degreeSpan.innerText = '\u00b0C'; 
+    degreeSpan.classList.add('self-start', 'pt-5', 'text-xl');
+    temperature.appendChild(degreeSpan);
 }
 
 function updateTodayConditions(todayObject){
-    const todayConditions = document.querySelector('#todayConditions')
-    todayConditions.children[0].innerText = `precipitation: ${todayObject.precip}`;
-    todayConditions.children[1].innerText = `humidity: ${todayObject.humidity}`;
-    todayConditions.children[2].innerText = `uv index: ${todayObject.uvindex}`;
+
+    const rainSpan = document.querySelector('#rainSpan');
+    rainSpan.innerText = todayObject.precip; 
+    const rainImg = document.querySelector('#rainImg');
+    rainImg.src = rain;
+
+
+    const humidSpan = document.querySelector('#humidSpan');
+    humidSpan.innerText = todayObject.humidity; 
+    const humidityImg = document.querySelector('#humidityImg');
+    humidityImg.src = humidity; 
+
+    const uvSpan = document.querySelector('#uvSpan'); 
+    uvSpan.innerText = todayObject.uvindex; 
+    const uvImg = document.querySelector('#uvImg');
+    uvImg.src = uv;
 }
 
 function updateTodayDescription(todayObject){
