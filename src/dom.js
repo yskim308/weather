@@ -72,9 +72,24 @@ function updateToday(todayObject){
 }
 
 // updating weather conditions for the other days (creation of the cards)
+const month = {
+    '01': 'Jan',
+    '02': 'Feb',
+    '03': 'Mar',
+    '04': 'Apr',
+    '05': 'May',
+    '06': 'Jun',
+    '07': 'Jul',
+    '08': 'Aug',
+    '09': 'Sep',
+    '10': 'Oct',
+    '11': 'Nov',
+    '12': 'Dec'
+}
 function createDayHeader(dayObject){
     const header  = document.createElement('div');
-    header.innerHTML = dayObject.datetime; 
+    const dates = dayObject.datetime.split('-');
+    header.innerHTML = `${month[dates[1]]} ${dates[2]}`; 
     return header;
 }
 
