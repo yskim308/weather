@@ -55,10 +55,6 @@ function updateTodayConditions(todayObject){
     uvImg.src = uv;
 }
 
-function updateTodayDescription(todayObject){
-    const todayDescription = document.querySelector('#todayDescription');
-    todayDescription.innerText = todayObject.description;
-}
 
 function updateToday(todayObject){
     if (!todayObject){
@@ -68,7 +64,6 @@ function updateToday(todayObject){
     updateTodayIcon(todayObject);
     updateTodayTemperature(todayObject);
     updateTodayConditions(todayObject);
-    updateTodayDescription(todayObject);
 }
 
 // updating weather conditions for the other days (creation of the cards)
