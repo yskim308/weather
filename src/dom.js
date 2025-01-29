@@ -145,6 +145,7 @@ function createDaysArray(daysArray){
     const arrayContainer = document.querySelector('#daysContainer');
     for (let i = 1; i < daysArray.length; i++){
         const dayContainer = document.createElement('div');
+        dayContainer.classList.add('shrink-0', 'w-40');
         const header = createDayHeader(daysArray[i]);
         const icon = createDayIcon(daysArray[i]);
         const temp = createDayTemperature(daysArray[i]); 
