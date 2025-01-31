@@ -12,6 +12,9 @@ import humidity from './img/humidity.png';
 import rain from './img/rain.png';
 import uv from './img/ultraviolet.png';
 
+// importing icons for high and low temperature
+import highTemp from './img/high-temp.svg';
+import lowTemp from './img/low-temp.svg';
 
 // updating the weather conditions for today
 function updateTodayIcon(todayObject){
@@ -83,6 +86,7 @@ const month = {
 }
 function createDayHeader(dayObject){
     const header  = document.createElement('div');
+    header.classList.add('font-bold', 'text-sm')
     const dates = dayObject.datetime.split('-');
     header.innerHTML = `${month[dates[1]]} ${dates[2]}`; 
     return header;
@@ -92,12 +96,52 @@ function createDayIcon(dayObject){
     const dayIcon = document.createElement('div'); 
     console.log(dayObject.icon);
     dayIcon.innerHTML = images[dayObject.icon]; 
-    dayIcon.classList.add('w-20', 'flex', 'justify-center', 'items-center');
-    return dayIcon;
+    dayIcon.classList.add('w-20');
+
+    const dayIconDiv = document.createElement('div');
+    dayIconDiv.classList.add('flex', 'justify-center', 'items-center', 'h-20');
+    dayIconDiv.appendChild(dayIcon);
+    return dayIconDiv;
 }
 
 function createDayTemperature(dayObject){
     const temperatureContainer = document.createElement('div');
+    temperatureContainer.classList.add('flex', 'justify-center');
+
+    const highTempDiv = document.createElement('div'); 
+    highTempDiv.classList.add('flex', 'px-3');
+
+    const highTempSvg = document.createElement('div'); 
+    highTempSvg.classList.add('w-7')
+    highTempSvg.innerHTML = highTemp; 
+
+    const highTempText = document.createElement('span');
+    highTempText.classList.add('text-sm', 'font-semibold', 'flex', 'items-center');
+    highTempText.innerText = `${dayObject.tempmax}\u00b0`; 
+
+    highTempDiv.appendChild(highTempSvg);
+    highTempDiv.appendChild(highTempText);
+
+    const lowTempDiv = document.createElement('div');
+    lowTempDiv.classList.add('flex');
+
+    const lowTempSvg = document.createElement('div'); 
+    lowTempSvg.classList.add('w-7')
+    lowTempSvg.innerHTML = lowTemp; 
+
+    const lowTempText = document.createElement('span'); 
+    lowTempText.innerText = `${dayObject.tempmin}\u00b0`; 
+    lowTempText.classList.add('text-sm', 'font-semibold', 'flex', 'items-center');
+
+    lowTempDiv.appendChild(lowTempSvg);
+    lowTempDiv.appendChild(lowTempText);
+    
+    temperatureContainer.appendChild(highTempDiv); 
+    temperatureContainer.appendChild(lowTempDiv);
+
+
+
+    /*
     const max = document.createElement('div');
     const min = document.createElement('div'); 
 
@@ -106,17 +150,22 @@ function createDayTemperature(dayObject){
 
     temperatureContainer.appendChild(max);
     temperatureContainer.appendChild(min);
+    temperatureContainer.classList.add('flex');
+    */
 
     return temperatureContainer;
 }
 
 function createConditions(dayObject, imgsrc, property){
     const container = document.createElement('div');
-    container.classList.add('flex');
+    container.classList.add('flex', 'p-1');
     const image = document.createElement('img');
     image.src = imgsrc; 
+    image.classList.add('w-5');
+
     const data = document.createElement('div');
     data.innerText = dayObject[property];
+    data.classList.add('text-xs', 'p-1');
 
     container.appendChild(image);
     container.appendChild(data);
@@ -134,6 +183,8 @@ function createDayConditions(dayObject){
     conditionContainer.appendChild(uvContainer);
     conditionContainer.appendChild(precipContainer);
     conditionContainer.appendChild(humidityContainer);
+    
+    conditionContainer.classList.add('flex')
 
     return conditionContainer; 
 }
