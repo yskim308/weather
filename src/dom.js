@@ -139,20 +139,6 @@ function createDayTemperature(dayObject){
     temperatureContainer.appendChild(highTempDiv); 
     temperatureContainer.appendChild(lowTempDiv);
 
-
-
-    /*
-    const max = document.createElement('div');
-    const min = document.createElement('div'); 
-
-    max.innerHTML = `max: ${dayObject.tempmax}`;
-    min.innerHTML = `min: ${dayObject.tempmin}`;
-
-    temperatureContainer.appendChild(max);
-    temperatureContainer.appendChild(min);
-    temperatureContainer.classList.add('flex');
-    */
-
     return temperatureContainer;
 }
 
@@ -196,7 +182,9 @@ function createDaysArray(daysArray){
     }
     for (let i = 1; i < daysArray.length; i++){
         const dayContainer = document.createElement('div');
-        dayContainer.classList.add('shrink-0', 'w-40');
+        dayContainer.classList.add('shrink-0', 'w-40', 'border', 
+        'rounded-md', 'border-opacity-20'
+        );
         const header = createDayHeader(daysArray[i]);
         const icon = createDayIcon(daysArray[i]);
         const temp = createDayTemperature(daysArray[i]); 
