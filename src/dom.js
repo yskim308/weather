@@ -183,7 +183,7 @@ function createDaysArray(daysArray){
     for (let i = 1; i < daysArray.length; i++){
         const dayContainer = document.createElement('div');
         dayContainer.classList.add('shrink-0', 'w-40', 'border', 
-        'rounded-md', 'border-opacity-20'
+        'rounded-md'
         );
         const header = createDayHeader(daysArray[i]);
         const icon = createDayIcon(daysArray[i]);
