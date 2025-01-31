@@ -122,7 +122,6 @@ function createHourArray(todayObject, tmrwObject){
         hourDiv.classList.add('px-3', 'w-20', 'shrink-0', 'flex', 'flex-col', 'border', 'rounded-3xl');
 
         const hourIndex = (currentHour + i) % 24; 
-        console.log(hourIndex);
         const isToday = hourIndex + i > 24; 
         const hourObject = isToday ? todayObject.hours[hourIndex] : tmrwObject.hours[hourIndex];
 
