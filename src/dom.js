@@ -89,8 +89,10 @@ function createDayHeader(dayObject){
 }
 
 function createDayIcon(dayObject){
-    const dayIcon = document.createElement('img'); 
-    dayIcon.src = images[dayObject.icon];
+    const dayIcon = document.createElement('div'); 
+    console.log(dayObject.icon);
+    dayIcon.innerHTML = images[dayObject.icon]; 
+    dayIcon.classList.add('w-20', 'flex', 'justify-center', 'items-center');
     return dayIcon;
 }
 
@@ -138,6 +140,9 @@ function createDayConditions(dayObject){
 
 function createDaysArray(daysArray){
     const arrayContainer = document.querySelector('#daysContainer');
+    while (arrayContainer.firstChild){
+        arrayContainer.removeChild(arrayContainer.firstChild);
+    }
     for (let i = 1; i < daysArray.length; i++){
         const dayContainer = document.createElement('div');
         dayContainer.classList.add('shrink-0', 'w-40');
