@@ -77,24 +77,37 @@ function createHourHeader(hourObject){
     hoursInt = hoursInt % 12 || 12; 
 
     const hoursDiv = document.createElement('div'); 
+    hoursDiv.classList.add('font-semibold')
     hoursDiv.innerText = `${hoursInt} ${ampm}`
 
-    return hoursDiv;
+    const hoursDivWrapper = document.createElement('div');
+    hoursDivWrapper.classList.add('flex', 'justify-center');
+    hoursDivWrapper.appendChild(hoursDiv);
+
+    return hoursDivWrapper;
 }
 
 function createHourIcon(hourObject){
     const hourIcon =  document.createElement('div'); 
-    hourIcon.classList.add('w-15');
+    hourIcon.classList.add('w-10', 'h-10');
     hourIcon.innerHTML = images[hourObject.icon]; 
+    
+    const hourIconDiv = document.createElement('div');
+    hourIconDiv.classList.add('flex', 'justify-center', 'items-center');
+    hourIconDiv.appendChild(hourIcon);
 
-    return hourIcon;
+    return hourIconDiv;
 }
 
 function createHourTemp(hourObject){
     const hourTemp = document.createElement('div'); 
     hourTemp.innerText = `${hourObject.temp}\u00b0`;
 
-    return hourTemp
+    const hourTempDiv = document.createElement('div');
+    hourTempDiv.classList.add('flex', 'justify-center');
+    hourTempDiv.appendChild(hourTemp);
+
+    return hourTempDiv;
 }
 
 function createHourArray(todayObject, tmrwObject){
@@ -106,7 +119,7 @@ function createHourArray(todayObject, tmrwObject){
     }
     for (let i = 0; i < 12; i++){
         const hourDiv = document.createElement('div');
-        hourDiv.classList.add('px-3')
+        hourDiv.classList.add('px-3', 'w-20', 'shrink-0', 'flex', 'flex-col', 'border', 'rounded-3xl');
 
         const hourIndex = (currentHour + i) % 24; 
         console.log(hourIndex);
@@ -238,7 +251,7 @@ function createDaysArray(daysArray){
     for (let i = 1; i < daysArray.length; i++){
         const dayContainer = document.createElement('div');
         dayContainer.classList.add('shrink-0', 'w-40', 'border', 
-        'rounded-md'
+        'rounded-3xl'
         );
         const header = createDayHeader(daysArray[i]);
         const icon = createDayIcon(daysArray[i]);
