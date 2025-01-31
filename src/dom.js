@@ -69,6 +69,62 @@ function updateToday(todayObject){
     updateTodayConditions(todayObject);
 }
 
+function createHourHeader(hourObject){
+    const [hours, minutes, seconds] = hourObject.datetime.split(':');
+    let hoursInt = parseInt(hours, 10); 
+
+    const ampm = hoursInt <= 12? 'AM': 'PM';
+    hoursInt = hoursInt % 12 || 12; 
+
+    const hoursDiv = document.createElement('div'); 
+    hoursDiv.innerText = `${hoursInt} ${ampm}`
+
+    return hoursDiv;
+}
+
+function createHourIcon(hourObject){
+    const hourIcon =  document.createElement('div'); 
+    hourIcon.classList.add('w-15');
+    hourIcon.innerHTML = images[hourObject.icon]; 
+
+    return hourIcon;
+}
+
+function createHourTemp(hourObject){
+    const hourTemp = document.createElement('div'); 
+    hourTemp.innerText = `${hourObject.temp}\u00b0`;
+
+    return hourTemp
+}
+
+function createHourArray(todayObject, tmrwObject){
+    const now = new Date();
+    const currentHour = now.getHours();
+    const hoursContainer = document.querySelector('#hoursContainer');
+    while (hoursContainer.firstChild){
+        hoursContainer.removeChild(hoursContainer.firstChild);
+    }
+    for (let i = 0; i < 12; i++){
+        const hourDiv = document.createElement('div');
+        hourDiv.classList.add('px-3')
+
+        const hourIndex = (currentHour + i) % 24; 
+        console.log(hourIndex);
+        const isToday = hourIndex + i > 24; 
+        const hourObject = isToday ? todayObject.hours[hourIndex] : tmrwObject.hours[hourIndex];
+
+        const hourHeader = createHourHeader(hourObject);
+        const hourIcon = createHourIcon(hourObject);
+        const hourTemp = createHourTemp(hourObject);
+
+        hourDiv.appendChild(hourHeader);
+        hourDiv.appendChild(hourIcon);
+        hourDiv.appendChild(hourTemp);
+
+        hoursContainer.appendChild(hourDiv);
+    }
+}
+
 // updating weather conditions for the other days (creation of the cards)
 const month = {
     '01': 'Jan',
@@ -94,7 +150,6 @@ function createDayHeader(dayObject){
 
 function createDayIcon(dayObject){
     const dayIcon = document.createElement('div'); 
-    console.log(dayObject.icon);
     dayIcon.innerHTML = images[dayObject.icon]; 
     dayIcon.classList.add('w-20');
 
@@ -199,4 +254,4 @@ function createDaysArray(daysArray){
     }
 }
 
-export {updateToday, createDaysArray};
+export {updateToday, createDaysArray, createHourArray};

@@ -1,6 +1,5 @@
 import './styles.css';
-import { updateToday, createDaysArray } from './dom';
-console.log('hello world!');
+import { updateToday, createDaysArray, createHourArray } from './dom';
 
 const searchForm = document.querySelector('#locationSearch');
 searchForm.addEventListener('submit', (event)=>{
@@ -18,6 +17,7 @@ async function getData(locationString){
     console.log(data);
     let daysArray = data.days;
     updateToday(daysArray[0]); 
+    createHourArray(daysArray[0], daysArray[1]);
     createDaysArray(daysArray);
     document.querySelector('#locationDiv').innerText = data.resolvedAddress;
     document.querySelector('#todayDescription').innerText = data.description;
