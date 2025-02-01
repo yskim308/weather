@@ -154,7 +154,7 @@ const month = {
 }
 function createDayHeader(dayObject){
     const header  = document.createElement('div');
-    header.classList.add('font-bold', 'text-sm')
+    header.classList.add('font-bold', 'text-sm', 'p-2')
     const dates = dayObject.datetime.split('-');
     header.innerHTML = `${month[dates[1]]} ${dates[2]}`; 
     return header;
