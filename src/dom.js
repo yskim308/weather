@@ -18,9 +18,11 @@ import lowTemp from './img/low-temp.svg';
 
 // updating the weather conditions for today
 function updateTodayIcon(todayObject){
-    const todayIcon = document.querySelector('#todayIcon');
+    const todayIconDiv = document.querySelector('#todayIcon');
+    const todayIcon = document.createElement('div');
     todayIcon.innerHTML = images[todayObject.icon];
     todayIcon.classList.add('w-20');
+    todayIconDiv.appendChild(todayIcon);
 }
 
 function updateTodayTemperature(todayObject){
