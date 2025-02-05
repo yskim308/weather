@@ -12,6 +12,8 @@ searchForm.addEventListener('submit', (event)=>{
 
 
 async function getData(locationString){
+    const loading = document.querySelector('#spinner');
+    loading.classList.remove("hidden");
     try{
         const apiFetch = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${locationString}?unitGroup=metric&key=9VKUDM7Q8M8GXRWBKGD9F9MMZ&contentType=json`, {mode: 'cors'});
         if (!apiFetch.ok){
@@ -25,9 +27,13 @@ async function getData(locationString){
         createDaysArray(daysArray);
         document.querySelector('#locationDiv').innerText = data.resolvedAddress;
         document.querySelector('#todayDescription').innerText = data.description;
+        loading.classList.toggle("hidden");
     }
     catch(error){
         showError()
+    }
+    finally{
+        loading.classList.add('hidden');
     }
 }
 
